@@ -1,0 +1,29 @@
+.nav-btn {
+   background: rgba(128, 128, 128, 0.158);
+   font-weight: 600;
+   color: var(--darkRed);
+   box-shadow: inset 0 0 10px rgb(196, 196, 196);
+   cursor: pointer;
+   transition: all 0.2s;
+   width: 10%;
+}
+.nav-btn:hover {
+    background: var(--highlight);
+}
+.nav-btn svg {
+    fill: var(--darkRed);
+    height: 60%;
+    transition: all 0.2s;
+    
+}
+.nav-btn span {
+    margin: 2%
+}
+.nav-active {
+    color: var(--themeRed);
+    background: rgba(255, 237, 71, 0.425);
+    box-shadow: 0 0 4px rgb(87, 87, 87);
+}
+.nav-active svg {
+    fill: var(--themeRed);
+}

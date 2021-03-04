@@ -1,0 +1,17 @@
+.bg {
+    background-color: rgb(252, 252, 252);
+}
+.header {
+    background-color: rgb(245, 245, 245);
+    height: 10vh;
+    position: fixed;
+    box-shadow: 0 1px 2px gray;
+}
+.logo {
+    background:var(--themeRed);
+    padding: 1vh;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 4vh;
+}
