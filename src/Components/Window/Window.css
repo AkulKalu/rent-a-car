@@ -1,0 +1,41 @@
+.window-bar svg {
+    height: 3vh;
+    transform: rotate(45deg);
+    fill: var(--darkRed);
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+.window-bar svg:hover {
+    fill: var(--themeRed);
+}
+
+.window-bar {
+    height: 5%;
+    background: rgb(235, 235, 235);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 1px 2px var(--darkRed);
+}
+.window-cont {
+   height: 95%;
+}
+.window-bar span {
+    font-weight: 600;
+    font-size: 2vh;
+    text-indent: 1rem;
+    color: var(--darkRed);
+}
+.backdrop {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.377);
+    /* backdrop-filter: blur(2px); */
+}
+.window {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px var(--darkRed);
+}

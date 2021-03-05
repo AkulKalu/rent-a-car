@@ -14,11 +14,15 @@
 .font-gray {
     color: var(--fontGray);
 }
-
 .full {
     height: 100vh;
 }
-
+.font-m {
+    font-size: 1.8vh;
+}
+.relative {
+    position: relative;
+}
 .flex {
     display: flex;
 }
@@ -35,6 +39,9 @@
 
 .jcont-start {
     justify-content: flex-start;
+}
+.jcont-center {
+    justify-content: center;
 }
 
 .ait-start {
