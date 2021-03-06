@@ -1,5 +1,4 @@
 import React, {Fragment, useState} from 'react';
-import { cars } from '../../reducers/cars';
 import CarForm from '../Forms/CarForm';
 import Window from '../Window/Window';
 
@@ -13,18 +12,22 @@ export default function Car(props) {
 
     return <Fragment>
         <div onClick={() => setWindow(window + 1) }  className="h-100 w-100 car" >
-                <div className='h-15 flex car-top'>
-                    <div className="w-50 h-100 flex-c jcont-start">
-                        <span>{car.type.toUpperCase()}</span>
+            <div className="h-100 w-100 car-cont">
+                    <div className='h-15 flex car-top'>
+                        <div className="w-50 h-100 flex-c jcont-start">
+                            <span>{car.type.toUpperCase()}</span>
+                        </div>
+                        <div className="w-50 h-100 flex-c jcont-end">
+                            <span >{car.available}</span>
+                        </div>
                     </div>
-                    <div className="w-50 h-100 flex-c jcont-end">
-                        <span >{car.available}</span>
+                    <div className="h-75  flex-c">
+                        <img className="h-75" src={car.image} alt=""/>
                     </div>
-                </div>
-                <div className="h-75  flex-c">
-                    <img className="h-75" src={car.image} alt=""/>
-                </div>
-                <div className="flex-c">{`${car.brand} ${car.model}`}</div>
+                    <div className="flex-c">{`${car.brand} ${car.model}`}</div>
+                
+            </div>
+          
             </div>
          <Window
               title = {`EDIT/DELETE CAR`} 

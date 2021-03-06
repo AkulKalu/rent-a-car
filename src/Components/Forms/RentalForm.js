@@ -1,50 +1,98 @@
 import React, {useState} from 'react';
 import Input from '../Inputs/Input';
 import Select from '../Inputs/Select';
+import Pricing from '../Pricing/Pricing'
+import useAccountant from '../../Hooks/useAccountant'
 import './Form.css';
 
 
-
-
 export default function RentalForm(props) {
-    let currentDate = new Date();
+    const {cars, customer, setRenting } = props;
+    const currentDate = new Date().toISOString().split('T')[0];
+
     const [rental, setRental] = useState({
-        started: formatDate(currentDate),
+        started: currentDate ,
         expires: '',
-        vehicle: '',
-        customer: '',
-        pricing: 0,
+        type: 'economy',
+        carId : '',
+        discounts: {
+            vip : 0,
+            length : 0
+        },
+        priceTotal: 0,
     })
 
-    function formatDate (date)  {
-        return date.toISOString().split('T')[0]
-     }
+    const accountant = useAccountant(rental.expires);
+ 
     const rentalHandle = (val, key) => {
-        setRental({
-        ...rental,
-        [key] : val})
+        let newRental = {
+            ...rental,
+            [key] : val
+        }
+        if(newRental.expires !== '' && newRental.carId !== '') {
+           
+            let vipDiscount = accountant.vipDiscount(customer.rentals);
+            let lengthDiscount = accountant.lengthDiscount(newRental.started, newRental.expires);
+            let priceTotal = accountant.priceTotal(cars[newRental.carId].price, [vipDiscount, lengthDiscount])
+
+            newRental.priceTotal = priceTotal;
+            newRental.discounts.length = lengthDiscount;
+            newRental.discounts.vip = vipDiscount;
+
+            setRenting(newRental)
+        }else {
+            setRenting(null)
+        }
+        setRental(newRental)
     }
-   
-    return <div className="h-100  w-100" >
+
+    const listCarsByType = () => {
+        return Object.entries(cars).filter(( [id, car] ) => car.type === rental.type ).map(
+            ([id, car]) => [id, `${car.brand} - ${car.model}`]
+         )
+    }
+    let pricing = <div>Set rent duration and pick a car</div>
+
+    if(rental.expires !== '' && rental.carId !== '') {
+        pricing = <Pricing 
+            carPricing = {cars[rental.carId].price}
+            lenDisc = {rental.discounts.length}
+            vipDisc = {rental.discounts.vip}
+            total = {rental.priceTotal}
+        />
+    }
+
+    return <div className="flex col ait-center h-100  w-100" >
         <div className="group-1">
-            <Input onChange={(e)=> rentalHandle(e.target.value, 'started')}  type="date" value= {rental.started} name="Starts at:"/>
+            <Input 
+            onChange={(e)=> rentalHandle(e.target.value, 'started')}  
+            type="date"
+            min = {currentDate}
+            value= {rental.started} 
+            name="Starts at:"/>
         </div>
         <div className="group-1">
-            <Input onChange={(e)=> rentalHandle(e.target.value, 'expires')} type="date" value= {rental.expires} name="Ends at:"/>
+            <Input 
+            onChange={(e)=> rentalHandle(e.target.value, 'expires')} 
+            min = {currentDate}
+            type="date" 
+            value= {rental.expires} 
+            name="Ends at:"/>
         </div>
         <div className="group-1">
             <Select 
-            onChange={(e)=> rentalHandle(e.target.value, 'expires')}  
-            value= {rental.vehicle} 
-            options = {[]}
+            onChange={(e)=> rentalHandle(e.target.value, 'type')}  
+            value= {rental.type} 
+            options = {['economy', 'estate', 'luxury', 'SUV', 'cargo' ]}
             name="Car type:"/>
         </div>
         <div className="group-1">
             <Select 
-            onChange={(e)=> rentalHandle(e.target.value, 'expires')}  
-            value= {rental.vehicle} 
-            options = {[]}
+            onChange={(e)=> rentalHandle(e.target.value, 'carId')}  
+            value= {rental.carId} 
+            options = {listCarsByType()}
             name="Car:"/>
         </div>
+        {pricing}
     </div>
 }

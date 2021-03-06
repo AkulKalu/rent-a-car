@@ -1,0 +1,19 @@
+.stat-value {
+    font-size: 6vh;
+    text-align: center;
+   
+    
+}
+.stat-name {
+    text-indent: 50%;
+}
+.stat {
+    font-weight: 600;
+    margin: 0 1vh;
+    color:var(--darkRed);
+
+}
+.stats-title {
+    border-bottom: 1px solid var(--darkRed);
+    color: var(--darkRed);
+}

@@ -1,22 +1,9 @@
 import {Table} from '../storage/storage';
 
-const customersTable = new Table({
-    stats : {
-        total: {
-          registered : 0,
-          renting : 0,
-        },
-        new : {
-          registered : 0,
-          renting : 0,
-        },
-        regular : {
-          registered : 0,
-          renting : 0,
-        },
-    },
+const customersTable = new Table('rc-customers',{
+    idTrack: 0,
     customers : {
-
+       
     }
 })
 
@@ -30,20 +17,38 @@ const initalState = {
 const reducer = (state, action) => {
     const {type, payload } = action;
     
+    let newState = {};
+
     switch (type) {
-      
       case "ADD":
-        return {
-       
+        newState = {
+          customers: {
+                ...state.customers,
+                [state.idTrack] : payload,
+            },
+            idTrack : state.idTrack + 1
         }
+     
+        customersTable.save(newState);
+        return newState;
       case "EDIT":
-        return {
-        
+        newState = {
+            ...state,
+            customers: {
+                ...state.customers,
+                [payload.id] : payload.customer,
+            },
         }
+
+        customersTable.save(newState);
+        return newState
     case "DELETE":
-        return {
-         
+        newState = {
+            ...state,
         }
+        delete newState.customers[payload];
+        customersTable.save(newState);
+        return newState
     default:
       return state;
     }

@@ -21,7 +21,7 @@
 }
 .nav-active {
     color: var(--themeRed);
-    background: rgba(255, 237, 71, 0.425);
+    background: rgba(129, 255, 71, 0.562);
     box-shadow: 0 0 4px rgb(87, 87, 87);
 }
 .nav-active svg {

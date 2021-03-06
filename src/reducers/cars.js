@@ -46,7 +46,7 @@ const reducer = (state, action) => {
                 ...state.cars,
                 [state.idTrack] : payload,
             },
-            idTrack : state.cars.idTrack + 1
+            idTrack : state.idTrack + 1
         }
         carsTable.save(newState);
         return newState;

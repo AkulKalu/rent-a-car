@@ -9,7 +9,7 @@
     --fontGray : gray;
     --themeRed :  rgb(179, 2, 2);
     --darkRed :  rgb(102, 21, 21);
-    --highlight: rgba(255, 237, 71, 0.158);
+    --highlight: rgba(82, 250, 31, 0.267);
 }
 .font-gray {
     color: var(--fontGray);
@@ -50,6 +50,9 @@
 
 .ait-end {
     align-items: flex-end;
+}
+.ait-center {
+    align-items: center;
 }
 
 .col {
@@ -98,6 +101,9 @@
 }
 .r {
     background: tomato;
+}
+.txt-r {
+    text-align: right;
 }
 .m-auto {
     margin: auto;

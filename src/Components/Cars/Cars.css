@@ -8,12 +8,22 @@
     font-weight: 600;
 }
 .car {
-    aspect-ratio: 1 / 1;
+    position: relative;
     background: rgba(128, 128, 128, 0.158);
     cursor: pointer;
     box-shadow: inset 0 0 1px black;
     font-weight: 600;
     color: var(--darkRed);
+}
+.car::before {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+}
+.car-cont {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .car:hover {
     background: var(--highlight);
