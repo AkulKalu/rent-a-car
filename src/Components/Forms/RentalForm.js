@@ -7,7 +7,7 @@ import './Form.css';
 
 
 export default function RentalForm(props) {
-    const {cars, customer, setRenting } = props;
+    const {cars, customer, setRenting , carModelCount} = props;
     const currentDate = new Date().toISOString().split('T')[0];
 
     const [rental, setRental] = useState({
@@ -47,7 +47,10 @@ export default function RentalForm(props) {
     }
 
     const listCarsByType = () => {
-        return Object.entries(cars).filter(( [id, car] ) => car.type === rental.type ).map(
+        return Object.entries(cars).filter(( [id, car] ) => { 
+           let rentedCount = carModelCount[id] || 0;
+           return car.type === rental.type && car.available > rentedCount 
+        }).map(
             ([id, car]) => [id, `${car.brand} - ${car.model}`]
          )
     }

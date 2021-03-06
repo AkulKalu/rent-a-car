@@ -2,9 +2,17 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
 }
-
+.span-red {
+    background: var(--themeRed);
+    color: white;
+}
+.span-green {
+    background: rgb(16, 194, 16);
+    color: white;
+}
 .car-top span {
-    margin: 0 5%;
+    padding: 0 5%;
+    margin-right: 5%;
     font-weight: 600;
 }
 .car {

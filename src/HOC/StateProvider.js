@@ -14,19 +14,18 @@ function StateProvider({children}) {
     const [carsState, carsDispatch] = useReducer(cars.reducer, cars.state);
     const [statsState, setStats] = useState({
         customers: {
-            total: 2,
-            renting: 1
+            total: 0,
+            renting: 0
         },
         cars: {
-            total: 2,
-            avalible: 1,
+            total: 0,
+            avalible: 0,
         }
     });
     const dataCounter = useDataCounter(customersState.customers, carsState.cars);
 
     useEffect(() => {
-        setStats(dataCounter.count())
-        console.log('s');
+        setStats(dataCounter.count());
     },[carsState, customersState])
 
     const [display, setDisplay] = useState(0);

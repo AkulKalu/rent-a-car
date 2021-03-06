@@ -11,7 +11,7 @@ export default function Customers(props) {
     let customers = Object.entries(customersState.customers).map((entry, i) => {
         return <Customer key={`customer${i}`} data = {entry}  />
     } )
-   
+    
     return <Fragment>
            <div className="w-100 flex customer-header" >
             <div className="h-100 w-25 flex-c">NAME</div>
@@ -24,7 +24,7 @@ export default function Customers(props) {
         </div>
         <div className="h-100  w-100 flex col customers" >
        
-        {customers}
+        {customers.reverse()}
     </div>
     </Fragment> 
 }

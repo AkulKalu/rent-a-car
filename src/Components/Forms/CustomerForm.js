@@ -6,7 +6,7 @@ import {store} from '../../HOC/StateProvider';
 import './Form.css';
 
 export default function CarForm(props) {
-    const {customersState, carsState, customerActions} = useContext(store);
+    const {customersState, carsState, customerActions, statsState : {carModels}} = useContext(store);
     const {edit, close, isRenting} = props;
 
     const data = edit !== undefined ? {...customersState.customers[edit]} : {
@@ -61,6 +61,7 @@ export default function CarForm(props) {
                     <RentalDisplay {...rental}  /> :
                     <RentalForm 
                     cars={carsState.cars}
+                    carModelCount = {carModels}
                     customer = {customer}
                     setRenting = {setRenting}
                      />

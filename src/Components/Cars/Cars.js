@@ -7,12 +7,12 @@ import './Cars.css';
 
 
 export default function Cars(props) {
-    const {carsState} = useContext(store);
-  
+    const {carsState, statsState} = useContext(store);
+   
     let cars = Object.entries(carsState.cars).map( (entry, i) => {
-        return <Car key={`car${i}`} data = {entry} />
+        return <Car key={`car${i}`} data = {[entry, statsState.carModels]} />
     } )
     return <div className="h-100 w-100 cars" >
-       {cars}
+       {cars.reverse()}
     </div>
 }

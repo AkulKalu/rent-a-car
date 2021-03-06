@@ -6,10 +6,9 @@ import './Cars.css';
 
 
 export default function Car(props) {
-    let {data: [carId, car]} = props;
-    
+    let {data: [[carId, car], carModelCount]} = props;
     const [window, setWindow] = useState(0);
-
+    
     return <Fragment>
         <div onClick={() => setWindow(window + 1) }  className="h-100 w-100 car" >
             <div className="h-100 w-100 car-cont">
@@ -18,7 +17,8 @@ export default function Car(props) {
                             <span>{car.type.toUpperCase()}</span>
                         </div>
                         <div className="w-50 h-100 flex-c jcont-end">
-                            <span >{car.available}</span>
+                            <span className="span-red" >{carModelCount[carId] || 0}</span>
+                            <span className="span-green">{car.available}</span>
                         </div>
                     </div>
                     <div className="h-75  flex-c">
