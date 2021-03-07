@@ -13,15 +13,12 @@
 .car-top span {
     padding: 0 5%;
     margin-right: 5%;
-    font-weight: 600;
 }
 .car {
     position: relative;
-    background: rgba(128, 128, 128, 0.158);
+    background: var(--grayBg);
     cursor: pointer;
     box-shadow: inset 0 0 1px black;
-    font-weight: 600;
-    color: var(--darkRed);
 }
 .car::before {
     content: '';

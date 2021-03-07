@@ -54,7 +54,7 @@ export default function RentalForm(props) {
             ([id, car]) => [id, `${car.brand} - ${car.model}`]
          )
     }
-    let pricing = <div>Set rent duration and pick a car</div>
+    let pricing = <div className="h-50 bold w-75 flex-c">Set rent duration and pick a car</div>
 
     if(rental.expires !== '' && rental.carId !== '') {
         pricing = <Pricing 
@@ -65,8 +65,11 @@ export default function RentalForm(props) {
         />
     }
 
-    return <div className="flex col ait-center h-100  w-100" >
-        <div className="group-1">
+    return <div className="flex col ait-center h-100 w-100" >
+         <div className="group-1 flex ait-center bold">
+            <h3 className="w-100 bdr-bottom">RENTAL</h3>
+        </div>
+        <div className="group-1  ">
             <Input 
             onChange={(e)=> rentalHandle(e.target.value, 'started')}  
             type="date"
@@ -91,6 +94,7 @@ export default function RentalForm(props) {
         </div>
         <div className="group-1">
             <Select 
+            none
             onChange={(e)=> rentalHandle(e.target.value, 'carId')}  
             value= {rental.carId} 
             options = {listCarsByType()}

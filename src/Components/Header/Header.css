@@ -1,12 +1,10 @@
-.bg {
-    
-}
 .header {
     background-color: rgb(245, 245, 245);
     height: 10vh;
     position: fixed;
     box-shadow: 0 1px 2px gray;
 }
+
 .logo {
     background:var(--themeRed);
     padding: 1vh;

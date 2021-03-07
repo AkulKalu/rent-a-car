@@ -13,7 +13,7 @@ export default function Customers(props) {
     } )
     
     return <Fragment>
-           <div className="w-100 flex customer-header" >
+           <div className="w-100 flex bold customer-header" >
             <div className="h-100 w-25 flex-c">NAME</div>
             <div className="h-100 w-25  flex-c">EMAIL</div>
             <div className="h-100 w-25 flex-c">PHONE</div>

@@ -3,7 +3,7 @@ import React from 'react';
  function Pricing(props) {
     const {carPricing, lenDisc, vipDisc, total } = props;
 
-    return <div className="w-75  flex col">
+    return <div className="w-75 marg-t-5 padd-t-5 bdr-top  flex col">
         <div className="w-100 flex">
             <h3 className="w-50">PRICING/DAY</h3>
             <h3 className="w-50 txt-r">DISCOUNT</h3>

@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import Input from '../Inputs/Input';
 import RentalForm from './RentalForm';
 import RentalDisplay from '../RentalDisplay/RentalDisplay';
+import useValidator from '../../Hooks/useValidator'
 import {store} from '../../HOC/StateProvider';
 import './Form.css';
 
@@ -16,7 +17,11 @@ export default function CarForm(props) {
        rentals: [],
     }
 
-
+    let {errors, validateFields} = useValidator({
+        name : ['required'],
+        email : ['required', 'email'],
+        phone : ['required']
+    })
 
     const [customer, setCustomer] = useState(data);
     const [renting, setRenting] = useState(null);
@@ -26,13 +31,20 @@ export default function CarForm(props) {
         ...customer,
         [key] : val})
     }
-    const btnHandle = (action, car) => {
-      let newCustomer = {...customer}
-      if(renting) {   
-        newCustomer.rentals.push(renting);
-      }
-      customerActions[action](car);
-      close();
+    const btnHandle = (action, payload) => {
+        if(action === 'delete' || !validateFields(customer)) {
+            if(action !== 'delete') {
+                let newCustomer = {...payload}
+                if(renting) {  
+                  
+                  newCustomer.rentals?.push(renting) ||   newCustomer.customer.rentals?.push(renting);
+                }
+                payload = newCustomer;
+            }
+            customerActions[action](payload);
+            close();
+        }
+        
     }
 
     let rental = null;
@@ -45,18 +57,23 @@ export default function CarForm(props) {
     }
    
     return <div className="h-100 w-100 font-m flex relative">
-            <div className="h-100 w-50 flex-c col">
-                <div className="group-1">
-                    <Input onChange={(e)=> customerHandle(e.target.value, 'name')} type="text" value={customer.name} name="Full name"/>
+         
+            <div className="h-100 w-50 flex col ait-center">
+                <div className="group-1 flex ait-center bold">
+                    <h3 className="w-100 bdr-bottom">CUSTOMER</h3>
                 </div>
                 <div className="group-1">
-                    <Input onChange={(e)=> customerHandle(e.target.value, 'email')} type="email" value={customer.email} name="Email"/>
+                    <Input errors={errors['name']} onChange={(e)=> customerHandle(e.target.value, 'name')} type="text" value={customer.name} name="Full name"/>
                 </div>
                 <div className="group-1">
-                    <Input onChange={(e)=> customerHandle(e.target.value, 'phone')} placeholder="123-456-7890" type="tel" value={customer.phone} name="Phone"/>
+                    <Input errors={errors['email']} onChange={(e)=> customerHandle(e.target.value, 'email')} type="email" value={customer.email} name="Email"/>
+                </div>
+                <div className="group-1">
+                    <Input errors={errors['phone']} onChange={(e)=> customerHandle(e.target.value, 'phone')} placeholder="0644587456" type="text" value={customer.phone} name="Phone"/>
                 </div>
             </div>
             <div className="h-100 w-50">
+               
                 {isRenting ? 
                     <RentalDisplay {...rental}  /> :
                     <RentalForm 

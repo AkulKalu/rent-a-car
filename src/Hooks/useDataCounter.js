@@ -17,11 +17,6 @@ export default function useDataCounter(customers, cars) {
                    
                 }
         })
-        // let renting = allCustomers.filter(([id, customer]) => {
-        //     if (!customer.rentals.length) return false;
-        //     let rental = customer.rentals[customer.rentals.length - 1]
-        //     return ( new Date(rental.expires) ) > ( new Date() )
-        // })
 
         return { customers: {
             total : allCustomers.length,
@@ -33,7 +28,7 @@ export default function useDataCounter(customers, cars) {
     } 
     const countCars = () => {
         let total = 0
-        let allCars = Object.entries(cars).forEach( ([id, car]) => {
+        Object.entries(cars).forEach( ([id, car]) => {
             total += Number(car.available);
         } )
         return {

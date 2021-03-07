@@ -3,15 +3,14 @@
     border-bottom: 1px solid gray;
     box-shadow: inset 0 0 10px rgb(230, 229, 229);
     cursor: pointer;
-    background: rgba(128, 128, 128, 0.158);
+    background: var(--grayBg);
 }
 .customer svg {
-    fill: var(--darkRed);
+    fill: rgba(128, 128, 128, 0.685);
 }
 .renting svg {
     fill: rgb(16, 173, 16);
 }
-
 .customer:hover {
     background: var(--highlight);
     box-shadow: inset 0 0 4px rgb(88, 88, 88);
@@ -23,6 +22,5 @@
     position: fixed;
     height: 3vh;
     background: var(--darkRed);
-    font-weight: 600;
     color: white;
 }

@@ -19,3 +19,6 @@
 .select {
     background: rgb(236, 238, 222);
 }
+.invalid {
+    color: crimson;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import './Inputs.css';
 
 export default function Input(props) {
-    let {name, options, value} = props;
+    let {name, options, value, none} = props;
 
     let optList = options.map((opt, i) => {
         let val, option;
@@ -19,7 +19,7 @@ export default function Input(props) {
     return <div className="h-100 w-100 flex col" >
         <label className="label" htmlFor={name}>{name}</label>
         <select className="input select" onChange={props.onChange}  value={value} name={name} id={name}>
-            <option  value=''>-none selected-</option>
+            {none ?  <option  value=''>-none selected-</option> : null}
             {optList}
         </select>
     </div>

@@ -10,7 +10,7 @@ export default function Car(props) {
     const [window, setWindow] = useState(0);
     
     return <Fragment>
-        <div onClick={() => setWindow(window + 1) }  className="h-100 w-100 car" >
+        <div onClick={() => setWindow(window + 1) }  className="h-100 w-100 bold car" >
             <div className="h-100 w-100 car-cont">
                     <div className='h-15 flex car-top'>
                         <div className="w-50 h-100 flex-c jcont-start">

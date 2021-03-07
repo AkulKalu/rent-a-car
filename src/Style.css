@@ -1,25 +1,7 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --bgCol : gray;
-    --fontGray : gray;
-    --themeRed :  rgb(179, 2, 2);
-    --darkRed :  rgb(102, 21, 21);
-    --highlight: rgba(82, 250, 31, 0.267);
-}
-.font-gray {
-    color: var(--fontGray);
-}
 .full {
     height: 100vh;
 }
-.font-m {
-    font-size: 1.8vh;
-}
+
 .relative {
     position: relative;
 }
@@ -96,17 +78,26 @@
     height: 100%;
 }
 
-.font-m {
-    font-size: 1.6vh;
-}
-.r {
-    background: tomato;
-}
 .txt-r {
     text-align: right;
 }
 .m-auto {
     margin: auto;
+}
+.bdr-top {
+    border-top: 1px solid var(--darkRed);
+}
+.bdr-bottom {
+    border-bottom: 1px solid var(--darkRed);
+}
+.marg-t-5 {
+    margin-top: 5%;
+}
+.padd-t-5 {
+    padding-top: 5vh;
+}
+.bold {
+    font-weight: 600;
 }
 
 

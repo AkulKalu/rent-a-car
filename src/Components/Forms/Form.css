@@ -2,8 +2,12 @@
     height: 11%;
     width: 80%;
 }
+.group-2 {
+    padding-right: 10%;
+    width: 40%;
+}
 .img-prev {
-    background: rgb(231, 231, 231);
+    background: var(--grayBg);
     box-shadow: 0 0 1px var(--darkRed);
 }
 .btn-wrap {

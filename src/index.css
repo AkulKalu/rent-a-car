@@ -12,3 +12,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: var(--darkRed);
+  font-size: 1.6vh;
+}
+
+:root {
+  --bgCol : gray;
+  --grayBg : rgba(128, 128, 128, 0.158);;
+  --themeRed :  rgb(179, 2, 2);
+  --darkRed :  rgb(102, 21, 21);
+  --highlight: rgba(82, 250, 31, 0.267);
+}
+
