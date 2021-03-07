@@ -20,7 +20,7 @@ export default function CarForm(props) {
     let {errors, validateFields} = useValidator({
         name : ['required'],
         email : ['required', 'email'],
-        phone : ['required']
+        phone : ['required', 'number']
     })
 
     const [customer, setCustomer] = useState(data);
@@ -48,6 +48,7 @@ export default function CarForm(props) {
     }
 
     let rental = null;
+
     if(isRenting) {
         let rentalInfo = customer.rentals[customer.rentals.length - 1];
         rental = {
@@ -57,19 +58,33 @@ export default function CarForm(props) {
     }
    
     return <div className="h-100 w-100 font-m flex relative">
-         
             <div className="h-100 w-50 flex col ait-center">
                 <div className="group-1 flex ait-center bold">
                     <h3 className="w-100 bdr-bottom">CUSTOMER</h3>
                 </div>
                 <div className="group-1">
-                    <Input errors={errors['name']} onChange={(e)=> customerHandle(e.target.value, 'name')} type="text" value={customer.name} name="Full name"/>
+                    <Input 
+                        errors={errors['name']} 
+                        onChange={(e)=> customerHandle(e.target.value, 'name')} 
+                        type="text" value={customer.name} 
+                        name="Full name"/>
                 </div>
                 <div className="group-1">
-                    <Input errors={errors['email']} onChange={(e)=> customerHandle(e.target.value, 'email')} type="email" value={customer.email} name="Email"/>
+                    <Input 
+                        errors={errors['email']} 
+                        onChange={(e)=> customerHandle(e.target.value, 'email')} 
+                        type="email" 
+                        value={customer.email} 
+                        name="Email"/>
                 </div>
                 <div className="group-1">
-                    <Input errors={errors['phone']} onChange={(e)=> customerHandle(e.target.value, 'phone')} placeholder="0644587456" type="text" value={customer.phone} name="Phone"/>
+                    <Input 
+                        errors={errors['phone']} 
+                        onChange={(e)=> customerHandle(e.target.value, 'phone')} 
+                        placeholder="0644587456" 
+                        type="text" 
+                        value={customer.phone} 
+                        name="Phone"/>
                 </div>
             </div>
             <div className="h-100 w-50">
@@ -77,20 +92,35 @@ export default function CarForm(props) {
                 {isRenting ? 
                     <RentalDisplay {...rental}  /> :
                     <RentalForm 
-                    cars={carsState.cars}
-                    carModelCount = {carModels}
-                    customer = {customer}
-                    setRenting = {setRenting}
+                        cars={carsState.cars}
+                        carModelCount = {carModels}
+                        customer = {customer}
+                        setRenting = {setRenting}
                      />
                 }
             </div>
             {edit ? 
                 <div className="flex-c w-50 h-15 btn-wrap">
-                    <button onClick={()=> btnHandle('edit', {id: edit, customer:customer})} type="button" className="form-btn" >{'EDIT'}</button>
-                    <button onClick={()=> btnHandle('delete', edit)} type="button" className="form-btn" >{'DELETE'}</button>
+                    <button 
+                        onClick={()=> btnHandle('edit', {id: edit, customer:customer})} 
+                        type="button" 
+                        className="form-btn" >
+                            {'EDIT'}
+                    </button>
+                    <button 
+                        onClick={()=> btnHandle('delete', edit)} 
+                        type="button" 
+                        className="form-btn" >
+                            {'DELETE'}
+                    </button>
                 </div> :
                 <div className="flex-c w-50 h-15 btn-wrap">
-                    <button onClick={()=> btnHandle('add', customer)} type="button" className="form-btn" >{'ADD'}</button>
+                    <button 
+                        onClick={()=> btnHandle('add', customer)} 
+                        type="button" 
+                        className="form-btn" >
+                            {'ADD'}
+                    </button>
                 </div>
             }
            

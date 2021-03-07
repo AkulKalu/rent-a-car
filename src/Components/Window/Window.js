@@ -16,19 +16,18 @@ export default function Window(props) {
     };
 
     return open ? <div className='backdrop flex-c'>
-        <div className="h-75 w-75 window" >
-            <div className="flex window-bar">
-                <div className="w-50 flex-c jcont-start ">
-                    <span>{props.title}</span>
-                </div>
-                <div className="w-50 flex-c jcont-end">
-                    <Plus onClick={closeWindow} />
-                </div>
-            </div>
-            <div className="w-100 window-cont">
-                <props.content {...props}  close={closeWindow} />
-            </div>
-            
-        </div>
-    </div> : null
+                        <div className="h-75 w-75 window" >
+                            <div className="flex window-bar">
+                                <div className="w-50 flex-c jcont-start ">
+                                    <span>{props.title}</span>
+                                </div>
+                                <div className="w-50 flex-c jcont-end">
+                                    <Plus onClick={closeWindow} />
+                                </div>
+                            </div>
+                            <div className="w-100 window-cont">
+                                <props.content {...props}  close={closeWindow} />
+                            </div>  
+                        </div>
+                    </div> : null
 }

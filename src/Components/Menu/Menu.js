@@ -22,6 +22,6 @@ export default function Menu(props) {
         </NavBtn>
     })
     return <div className="h-100 w-75 bold flex">
-        {buttons}
-    </div>
+                {buttons}
+            </div>
 }

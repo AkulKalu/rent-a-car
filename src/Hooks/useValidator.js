@@ -12,10 +12,13 @@ export default function useValidator(fieldRules) {
            if( !val || !val?.length ) return '*required '
            return ''
         },
-        email : (email) => {
+        email : email => {
             const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             
             return re.test(String(email).toLowerCase()) ? '' : '*must be valid email'
+        },
+        number : value => {
+            return (isNaN(value) || value === '') ? 'not a number' : ''
         }
     }
     const validate = fields => {
@@ -37,6 +40,7 @@ export default function useValidator(fieldRules) {
                 newErrors[field] = ''
             }
         })
+       
         setErrors(newErrors);
         return isInvalid
     }

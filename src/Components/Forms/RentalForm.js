@@ -74,34 +74,34 @@ export default function RentalForm(props) {
         </div>
         <div className="group-1  ">
             <Input 
-            onChange={(e)=> rentalHandle(e.target.value, 'started')}  
-            type="date"
-            min = {currentDate}
-            value= {rental.started} 
-            name="Starts at:"/>
+                onChange={(e)=> rentalHandle(e.target.value, 'started')}  
+                type="date"
+                min = {currentDate}
+                value= {rental.started} 
+                name="Starts at:"/>
         </div>
         <div className="group-1">
             <Input 
-            onChange={(e)=> rentalHandle(e.target.value, 'expires')} 
-            min = {currentDate}
-            type="date" 
-            value= {rental.expires} 
-            name="Ends at:"/>
+                onChange={(e)=> rentalHandle(e.target.value, 'expires')} 
+                min = {currentDate}
+                type="date" 
+                value= {rental.expires} 
+                name="Ends at:"/>
         </div>
         <div className="group-1">
             <Select 
-            onChange={(e)=> rentalHandle(e.target.value, 'type')}  
-            value= {rental.type} 
-            options = {['economy', 'estate', 'luxury', 'SUV', 'cargo' ]}
-            name="Car type:"/>
+                onChange={(e)=> rentalHandle(e.target.value, 'type')}  
+                value= {rental.type} 
+                options = {['economy', 'estate', 'luxury', 'SUV', 'cargo' ]}
+                name="Car type:"/>
         </div>
         <div className="group-1">
             <Select 
-            none
-            onChange={(e)=> rentalHandle(e.target.value, 'carId')}  
-            value= {rental.carId} 
-            options = {listCarsByType()}
-            name="Car:"/>
+                none
+                onChange={(e)=> rentalHandle(e.target.value, 'carId')}  
+                value= {rental.carId} 
+                options = {listCarsByType()}
+                name="Car:"/>
         </div>
         {pricing}
     </div>

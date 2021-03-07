@@ -11,10 +11,9 @@ export default function Stats(props) {
         return <Stat key={`stat${i}`} name={name} value={value}  />
     })
     return <div className="w-100 h-100  flex-c col">
-        <h3 className="w-75 stats-title">{props.name.toUpperCase()}</h3>
-        <div className="h-75 w-100 flex-c">
-        {stats}
-        </div>
-        
-    </div>
+                <h3 className="w-75 stats-title">{props.name.toUpperCase()}</h3>
+                <div className="h-75 w-100 flex-c">
+                    {stats}
+                </div>   
+           </div>
 }
