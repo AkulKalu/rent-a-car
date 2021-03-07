@@ -29,6 +29,9 @@ export default function RentalForm(props) {
             ...rental,
             [key] : val
         }
+        if(key === 'type') {
+            newRental.carId = '';
+        }
         if(newRental.expires !== '' && newRental.carId !== '') {
            
             let vipDiscount = accountant.vipDiscount(customer.rentals);
